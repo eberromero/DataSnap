@@ -1,0 +1,77 @@
+unit Principal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
+  Data.DBXDataSnap, IPPeerClient, Data.DBXCommon, Data.DB, Datasnap.DBClient,
+  Datasnap.DSConnect, Data.SqlExpr, FMX.Edit, FMX.Layouts, FMX.ListBox,
+  FMX.TabControl, System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors,
+  Data.Bind.EngExt, Fmx.Bind.DBEngExt, FMX.StdCtrls, Data.Bind.Components,
+  Data.Bind.DBScope;
+
+type
+  TfrmPrincipal = class(TForm)
+    tcGeral: TTabControl;
+    tbPrincipal: TTabItem;
+    tbDados: TTabItem;
+    ListBox1: TListBox;
+    SearchBox1: TSearchBox;
+    SQLConnection1: TSQLConnection;
+    DSProviderConnection1: TDSProviderConnection;
+    cdsEstado: TClientDataSet;
+    cdsEstadoID: TIntegerField;
+    cdsEstadoSIGLA: TStringField;
+    cdsEstadoNOME: TStringField;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkFillControlToField1: TLinkFillControlToField;
+    tbConfig: TTabItem;
+    edtHost: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    edtPorta: TEdit;
+    procedure SQLConnection1BeforeConnect(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.fmx}
+
+procedure TfrmPrincipal.SQLConnection1BeforeConnect(Sender: TObject);
+begin
+  try
+    if SQLConnection1.Connected = False then
+    begin
+      SQLConnection1.Close;
+      SQLConnection1.Params.Clear;
+      SQLConnection1.Params.Add('DriverUnit=Data.DBXDataSnap');
+      SQLConnection1.Params.Add('HostName='+edtHost.Text);
+      SQLConnection1.Params.Add('Port='+edtPorta.Text);
+      SQLConnection1.Params.Add('CommunicationProtocol=tcp/ip');
+      SQLConnection1.Params.Add('DatasnapContext=datasnap/');
+      SQLConnection1.Params.Add('DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland.Data.DbxClientDriver,Version=20.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0d1b1b');
+      SQLConnection1.Params.Add('Filters={}');
+      SQLConnection1.Connected := True;
+      cdsEstado.Open;
+    end
+    else
+    begin
+      SQLConnection1.Close;
+      cdsEstado.Close;
+      tcGeral.ActiveTab := tbConfig;
+    end;
+  except
+
+  end;
+end;
+
+end.

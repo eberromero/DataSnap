@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2019/02/28 23:52:12.615,=C:\Users\Eber\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/02/28 23:57:12.357,D:\Estudos\Delphi\DataSnap\Mobile\Principal.pas=C:\Users\Eber\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/02/28 23:57:12.357,D:\Estudos\Delphi\DataSnap\Mobile\Principal.fmx=C:\Users\Eber\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2019/02/28 23:58:12.525,D:\Estudos\Delphi\DataSnap\Mobile\SnapMobile.dproj=C:\Users\Eber\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2019/02/28 23:58:25.580,D:\Estudos\Delphi\DataSnap\Mobile\Mobile.dproj=D:\Estudos\Delphi\DataSnap\Mobile\SnapMobile.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
